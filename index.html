@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soulhappy Collective — Cute Greeting Cards</title>
+  <meta name="description" content="Crafting moments of joy and connection through cute cards and stationery. Shop Soulhappy Collective." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ========================
+       HEADER
+       ======================== -->
+  <header class="site-header">
+    <nav class="nav-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Soulhappy Collective logo" onerror="this.style.display='none'" />
+        <span class="logo-text">Soulhappy Collective</span>
+      </a>
+
+      <!-- Centre nav links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- Right icons -->
+      <div class="nav-icons">
+        <button aria-label="Search" onclick="toggleSearch()">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <a href="#" aria-label="Account">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="#" class="cart-wrap" aria-label="Cart" onclick="return false">
+          <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge" id="cart-count">0</span>
+        </a>
+        <button class="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </nav>
+
+    <!-- Search bar (hidden by default) -->
+    <div id="search-bar" style="display:none; padding: 10px 24px; border-top: 1px solid var(--border);">
+      <input type="search" id="search-input" placeholder="Search cards…"
+        style="width:100%; max-width:480px; display:block; margin:0 auto; padding:10px 14px; border:1px solid var(--border); border-radius:4px; font-size:14px; background:var(--white); outline:none;"
+        oninput="filterProducts(this.value)" />
+    </div>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobile-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========================
+       PRODUCT SECTION
+       ======================== -->
+  <main>
+    <section class="section">
+      <h2 class="section-title">Our Selection</h2>
+
+      <div class="product-grid" id="product-grid">
+
+        <!-- Card 1 -->
+        <article class="product-card" data-name="I Love You Siu Maich Greeting Card" onclick="addToCart(this)">
+          <div class="product-img-wrap">
+            <img src="assets/card-siu-maich.jpg"
+                 alt="I Love You Siu Maich greeting card — illustrated dim sum basket with cute characters"
+                 onerror="this.src='assets/placeholder.svg'" />
+          </div>
+          <p class="product-name">I Love You Siu Maich Greeting Card</p>
+          <p class="product-price">£3.90 GBP</p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="product-card" data-name="Jingle Buns Christmas Card" onclick="addToCart(this)">
+          <div class="product-img-wrap">
+            <img src="assets/card-jingle-buns.jpg"
+                 alt="Jingle Buns Christmas card — cute bao bun characters in a festive basket"
+                 onerror="this.src='assets/placeholder.svg'" />
+          </div>
+          <p class="product-name">Jingle Buns Christmas Card</p>
+          <p class="product-price">£3.90 GBP</p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="product-card" data-name="You're Wonton in a Million Greeting Card" onclick="addToCart(this)">
+          <div class="product-img-wrap">
+            <img src="assets/card-wonton.jpg"
+                 alt="You're Wonton in a Million greeting card — cute wonton characters in a bowl"
+                 onerror="this.src='assets/placeholder.svg'" />
+          </div>
+          <p class="product-name">You're Wonton in a Million Greeting Card</p>
+          <p class="product-price">£3.90 GBP</p>
+        </article>
+
+      </div>
+      <!-- #product-grid -->
+
+    </section>
+  </main>
+
+  <hr class="divider" />
+
+  <!-- ========================
+       FOOTER
+       ======================== -->
+  <footer class="site-footer">
+
+    <div class="footer-welcome">
+      <h2>Welcome to Soulhappy Collective :)</h2>
+      <p>We're here to craft moments of joy and connection through cute cards and stationery. Our mission is to inspire happiness, foster positivity, and bring a little extra light to your day, one heartfelt design at a time.</p>
+    </div>
+
+    <div class="subscribe-section">
+      <h3>Subscribe to our emails</h3>
+      <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+        <input type="email" placeholder="Email" required aria-label="Email address" />
+        <button type="submit" aria-label="Subscribe">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025, Soulhappy Collective</span>
+      <span>·</span>
+      <a href="#">Privacy policy</a>
+      <span>·</span>
+      <a href="#">Cookie preferences</a>
+    </div>
+
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
