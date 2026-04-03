@@ -1,9 +1,7 @@
 {
-	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "soulhappy-collective",
-	"main": "./workers/app.ts",
+	"main": "./workers/app.js",
 	"compatibility_date": "2025-10-08",
-	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"directory": "./public",
 		"binding": "ASSETS"
