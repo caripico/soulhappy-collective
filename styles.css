@@ -49,7 +49,7 @@ img {
    =========================== */
 
 .site-header {
-  background: var(--bg);
+  background: var(--white);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -63,7 +63,7 @@ img {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  height: 80px;
+  height: 4.25rem;
 }
 
 /* Logo */
@@ -76,19 +76,11 @@ img {
 }
 
 .logo img {
-  height: 52px;
+  height: 2.5rem;
   width: auto;
 }
 
-.logo-text {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text);
-  line-height: 1;
-}
+
 
 /* Center nav links */
 .nav-links {
@@ -217,28 +209,69 @@ img {
 }
 
 /* ===========================
-   HERO BANNER (optional, hidden by default)
+   HERO BANNER
    =========================== */
 
-.hero {
-  background: var(--bg);
-  text-align: center;
-  padding: 64px 24px 48px;
+.hero-banner {
+  background-color: #EDE8E0;
+  overflow: hidden;
 }
 
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 5vw, 48px);
-  font-weight: 400;
-  color: var(--text);
-  margin-bottom: 16px;
+.hero-banner__img {
+  display: block;
+  width: 100%;
+  height: 12.5rem;
+  object-fit: cover;
+  object-position: center;
 }
 
-.hero p {
-  font-size: 15px;
+
+/* ===========================
+   SECTION HEADER + COLLECTION PILLS
+   =========================== */
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+}
+
+.collection-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 500;
   color: var(--text-light);
-  max-width: 480px;
-  margin: 0 auto;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.pill--active {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--white);
 }
 
 /* ===========================
@@ -289,6 +322,16 @@ img {
   height: 100%;
   object-fit: cover;
   transition: transform 0.35s ease;
+}
+
+.product-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
 }
 
 .product-name {
@@ -560,6 +603,17 @@ img {
     gap: 12px;
   }
 
+
+  .hero-banner__inner {
+    padding: 56px 24px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -586,6 +640,6 @@ img {
   }
 
   .logo img {
-    height: 42px;
+    height: 2rem;
   }
 }

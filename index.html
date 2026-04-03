@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 </head>
 <body>
 
@@ -20,8 +21,7 @@
 
       <!-- Logo -->
       <a href="index.html" class="logo">
-        <img src="assets/logo.png" alt="Soulhappy Collective logo" onerror="this.style.display='none'" />
-        <span class="logo-text">Soulhappy Collective</span>
+        <img src="assets/SHC-logo.jpg" alt="Soulhappy Collective logo" />
       </a>
 
       <!-- Centre nav links -->
@@ -32,12 +32,6 @@
 
       <!-- Right icons -->
       <div class="nav-icons">
-        <button aria-label="Search" onclick="toggleSearch()">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button>
-        <a href="#" aria-label="Account">
-          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </a>
         <a href="#" class="cart-wrap" aria-label="Cart" onclick="return false">
           <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="cart-badge" id="cart-count">0</span>
@@ -49,13 +43,6 @@
 
     </nav>
 
-    <!-- Search bar (hidden by default) -->
-    <div id="search-bar" style="display:none; padding: 10px 24px; border-top: 1px solid var(--border);">
-      <input type="search" id="search-input" placeholder="Search cards…"
-        style="width:100%; max-width:480px; display:block; margin:0 auto; padding:10px 14px; border:1px solid var(--border); border-radius:4px; font-size:14px; background:var(--white); outline:none;"
-        oninput="filterProducts(this.value)" />
-    </div>
-
     <!-- Mobile nav -->
     <div class="mobile-nav" id="mobile-nav">
       <ul>
@@ -66,43 +53,60 @@
   </header>
 
   <!-- ========================
+       HERO BANNER
+       ======================== -->
+  <section class="hero-banner" aria-label="Promotion">
+    <img src="assets/soulhappy-collective_banner.jpg" alt="Soulhappy Collective banner" class="hero-banner__img" />
+  </section>
+
+  <!-- ========================
        PRODUCT SECTION
        ======================== -->
   <main>
     <section class="section">
-      <h2 class="section-title">Our Selection</h2>
+      <div class="section-header">
+        <h2 class="section-title">Our Selection</h2>
+        <div class="collection-pills" role="group" aria-label="Filter by collection">
+          <button class="pill pill--active" data-collection="all" onclick="filterByCollection(this)">All</button>
+          <button class="pill" data-collection="food" onclick="filterByCollection(this)">Food Collection</button>
+          <button class="pill" data-collection="bunny" onclick="filterByCollection(this)">Bunny Collection</button>
+        </div>
+      </div>
 
       <div class="product-grid" id="product-grid">
 
         <!-- Card 1 -->
-        <article class="product-card" data-name="I Love You Siu Maich Greeting Card" onclick="addToCart(this)">
+        <article class="product-card" data-name="I Love You Siu Maich Greeting Card" data-collection="food" onclick="addToCart(this)">
           <div class="product-img-wrap">
             <img src="assets/card-siu-maich.jpg"
                  alt="I Love You Siu Maich greeting card — illustrated dim sum basket with cute characters"
                  onerror="this.src='assets/placeholder.svg'" />
           </div>
+          <span class="product-tag">Asian Food Collection</span>
           <p class="product-name">I Love You Siu Maich Greeting Card</p>
           <p class="product-price">£3.90 GBP</p>
         </article>
 
         <!-- Card 2 -->
-        <article class="product-card" data-name="Jingle Buns Christmas Card" onclick="addToCart(this)">
+        <article class="product-card" data-name="Jingle Buns Christmas Card" data-collection="food" onclick="addToCart(this)">
           <div class="product-img-wrap">
             <img src="assets/card-jingle-buns.jpg"
                  alt="Jingle Buns Christmas card — cute bao bun characters in a festive basket"
                  onerror="this.src='assets/placeholder.svg'" />
           </div>
+          <span class="product-tag">Asian Food Collection</span>
           <p class="product-name">Jingle Buns Christmas Card</p>
           <p class="product-price">£3.90 GBP</p>
         </article>
 
         <!-- Card 3 -->
-        <article class="product-card" data-name="You're Wonton in a Million Greeting Card" onclick="addToCart(this)">
+        <article class="product-card" data-name="You're Wonton in a Million Greeting Card" data-collection="food" onclick="addToCart(this)">
           <div class="product-img-wrap">
             <img src="assets/card-wonton.jpg"
                  alt="You're Wonton in a Million greeting card — cute wonton characters in a bowl"
                  onerror="this.src='assets/placeholder.svg'" />
           </div>
+          <span class="product-tag">Asian Food Collection</span>
           <p class="product-name">You're Wonton in a Million Greeting Card</p>
           <p class="product-price">£3.90 GBP</p>
         </article>

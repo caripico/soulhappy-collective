@@ -30,6 +30,17 @@ function filterProducts(query) {
   });
 }
 
+// ── Collection pill filter ─────────────────────────────────
+function filterByCollection(pill) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('pill--active'));
+  pill.classList.add('pill--active');
+
+  const collection = pill.dataset.collection;
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.style.display = (collection === 'all' || card.dataset.collection === collection) ? '' : 'none';
+  });
+}
+
 // ── Toast helper ───────────────────────────────────────────
 function showToast(msg) {
   const toast = document.getElementById('toast');
