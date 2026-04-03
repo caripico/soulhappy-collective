@@ -1,23 +1,16 @@
-import { createRequestHandler } from "react-router";
-
-declare module "react-router" {
-	export interface AppLoadContext {
-		cloudflare: {
-			env: Env;
-			ctx: ExecutionContext;
-		};
-	}
-}
-
-const requestHandler = createRequestHandler(
-	() => import("virtual:react-router/server-build"),
-	import.meta.env.MODE,
-);
-
 export default {
-	fetch(request, env, ctx) {
-		return requestHandler(request, {
-			cloudflare: { env, ctx },
-		});
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
+		let path = url.pathname;
+
+		// Route to correct HTML file
+		if (path === "/" || path === "/index.html") {
+			path = "/index.html";
+		} else if (path === "/contact" || path === "/contact.html") {
+			path = "/contact.html";
+		}
+
+		// Serve static assets from the ASSETS binding
+		return env.ASSETS.fetch(request);
 	},
 } satisfies ExportedHandler<Env>;
