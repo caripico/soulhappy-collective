@@ -213,7 +213,7 @@ img {
    =========================== */
 
 .hero-banner {
-  background-color: #EDE8E0;
+  background-color: var(--white);
   overflow: hidden;
 }
 
