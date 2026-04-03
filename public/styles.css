@@ -219,10 +219,10 @@ img {
 
 .hero-banner__img {
   display: block;
-  width: 100%;
-  height: 12.5rem;
-  object-fit: cover;
-  object-position: center;
+  height: 18.75rem;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 
